@@ -1,27 +1,51 @@
-require_relative './student'
-require_relative './classroom'
-require_relative './book'
-require_relative './rental'
+require_relative './app'
 
-s1 = Student.new('A-Class', 21, 'Zack')
-s2 = Student.new('Z-Class', 25, 'Ned')
-class_a = Classroom.new('A-Class')
+def menu
+  puts "\nPlease choose an option by entering a number:"
+  options = [
+    '1 - List all books',
+    '2 - List all people',
+    '3 - Create a person',
+    '4 - Create a book',
+    '5 - Create a rental',
+    '6 - List all rentals for a given person (id)',
+    '7 - Exit App'
+  ]
+  puts options
+end
 
-p s1.classroom # => 'A-Class'
-p class_a.students.count # => 0
+def option_case(choice)
+  case choice
+  when 1
+    list_all_books
+  when 2
+    list_all_people
+  when 3
+    create_person
+  when 4
+    create_book
+  when 5
+    create_rental
+  when 6
+    list_rentals_by_id
+  else
+    puts 'Incorrect choice, choose a number between 1..9'
+  end
+end
 
-s1.classroom = class_a
-p class_a.students.count # => 1
+def prompt_user
+  menu
 
-class_a.add_student(s2)
-p class_a.students.count # => 2
-p s2.classroom.label # => 'A-Class'
+  choice = gets.chomp.to_i
+  choice == 7 ? quit_app : option_case(choice)
 
-book1 = Book.new('The Lord of the Rings', 'Tolkien')
-r1 = Rental.new(Time.now, s1, book1)
+  prompt_user
+end
 
-p r1.book.title, # => The Lord of the Rings
-  r1.person.name # => Zack
+def main
+  puts "\n👋 Welcome to School Library App!"
+  app = App.new
+  app.run
+end
 
-p book1.rentals.count # => 1
-p s1.rentals.count # => 1
+main

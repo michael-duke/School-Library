@@ -42,6 +42,9 @@ class App
       register_student
     when 2
       register_teacher
+    else
+      puts 'Incorrect choice, choose a number between 1..2 😀'
+      create_person
     end
   end
 
@@ -89,6 +92,7 @@ class App
     when 'y', 'Y'
       true
     else
+      puts 'Incorrect choice, kindly enter \'y\', \'Y\' or \'n\', \'N\' 😀'
       permission?
     end
   end

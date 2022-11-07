@@ -3,6 +3,7 @@ require_relative './student'
 require_relative './teacher'
 require_relative './book'
 require_relative './rental'
+require_relative './prompt_user'
 
 class App
   attr_reader :books, :people, :rentals
@@ -11,10 +12,6 @@ class App
     @books = []
     @people = []
     @rentals = []
-  end
-
-  def run
-    prompt_user
   end
 
   def quit_app
@@ -143,12 +140,12 @@ class App
   def create_rental
     print "Select a book from the following list by number:\n"
     list_all_books
-    prompt_user if @books.empty?
+    PromptUser.new.prompt_user(self) if @books.empty?
     book_index = gets.chomp.to_i - 1
 
     print "Select a person from the following list by number:\n"
     list_all_people
-    prompt_user if @people.empty?
+    PromptUser.new.prompt_user(self) if @people.empty?
     person_index = gets.chomp.to_i - 1
 
     print 'Date [yyyy/mm/dd] : '

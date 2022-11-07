@@ -121,16 +121,17 @@ class App
 
   # Rentals
   def list_rentals_by_id
-    print "Enter a person's ID: "
-    person_id = gets.chomp.to_i
-    if !@people.find { |person| person.id == person_id }
-      puts "No rental found with ID: #{person_id} 😔"
-    elsif @rentals.empty?
+    if @rentals.empty?
       puts 'The rental list is empty, add some rentals...'
     else
-      puts "Rentals list, count(#{@people.count})🚀 :\n\n"
-      @rentals.select do |rental|
-        if rental.person.id == person_id
+      print "Enter a person's ID: "
+      person_id = gets.chomp.to_i
+      person_rentals = @rentals.select { |rental| rental.person.id == person_id }
+      if person_rentals.empty?
+        puts "No rental found with ID: #{person_id} 😔"
+      else
+        puts "Rentals list, count(#{person_rentals.count})🚀 :\n\n"
+        person_rentals.each do |rental|
           puts "Date: #{rental.date}, Book: '#{rental.book.title}' by #{rental.book.author}"
         end
       end

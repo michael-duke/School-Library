@@ -36,6 +36,13 @@ Have `Ruby`, and `Git` installed
 - Twitter: [@MikeDuke21](https://twitter.com/MikeDuke21)
 - LinkedIn: [MICHAEL MESFIN](https://linkedin.com/in/https://www.linkedin.com/in/michael-21-duke/)
 
+👤**Author Samiullah**
+
+- GitHub: [@samiullah997]([https://github.com/githubhandle](https://github.com/samiullah997))
+- Twitter: [@samiullahk997][(https://twitter.com/twitterhandle)](https://twitter.com/samiullahk997)
+- LinkedIn: [@samiullah-full-stack][(https://linkedin.com/in/linkedinhandle)](https://www.linkedin.com/in/samiullah-khan-2702b7171/)
+
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!

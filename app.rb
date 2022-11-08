@@ -5,14 +5,15 @@ require_relative './book'
 require_relative './rental'
 require_relative './prompt_user'
 require_relative './save_data'
+require_relative './read_data'
 
 class App
   attr_reader :books, :people, :rentals
 
   def initialize
-    @books = []
-    @people = []
-    @rentals = []
+    @books = ReadData.new.read_books
+    @people = ReadData.new.read_people
+    @rentals = ReadData.new.read_rentals
   end
 
   def quit_app

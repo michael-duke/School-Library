@@ -1,0 +1,46 @@
+[
+  {
+    "date": "2022/11/09",
+    "title": "The Lord of the Rings",
+    "author": "Tolkien",
+    "id": 1,
+    "name": "Samiullah",
+    "age": 21,
+    "has_permission": false,
+    "type": "Student",
+    "classroom": "A-231"
+  },
+  {
+    "date": "2022/12/12",
+    "title": "The Songs of Achilles",
+    "author": "Madelaine Miller",
+    "id": 2,
+    "name": "Talia",
+    "age": 45,
+    "has_permission": true,
+    "type": "Teacher",
+    "specialization": "Applied Maths"
+  },
+  {
+    "date": "2022/12/10",
+    "title": "Game Of Thrones",
+    "author": "George Martin",
+    "id": 4,
+    "name": "Burton",
+    "age": 45,
+    "has_permission": true,
+    "type": "Teacher",
+    "specialization": "Nuclear Physics"
+  },
+  {
+    "date": "2022/12/11",
+    "title": "Rich Dad Poor Dad",
+    "author": "Robert Kiyoaski",
+    "id": 4,
+    "name": "Burton",
+    "age": 45,
+    "has_permission": true,
+    "type": "Teacher",
+    "specialization": "Nuclear Physics"
+  }
+]

@@ -25,7 +25,7 @@ To get a local copy up and running follow these simple example steps.
 ### Prerequisites
 Have `Ruby`, and `Git` installed
 ### Usage
-`ruby my_enumerable.rb`
+`ruby main.rb`
 ### Run tests
 `rpsec`
 ## Authors
@@ -38,9 +38,9 @@ Have `Ruby`, and `Git` installed
 
 👤**Author Samiullah**
 
-- GitHub: [@samiullah997]([https://github.com/githubhandle](https://github.com/samiullah997))
-- Twitter: [@samiullahk997][(https://twitter.com/twitterhandle)](https://twitter.com/samiullahk997)
-- LinkedIn: [@samiullah-full-stack][(https://linkedin.com/in/linkedinhandle)](https://www.linkedin.com/in/samiullah-khan-2702b7171/)
+- GitHub: [@samiullah997](https://github.com/samiullah997)
+- Twitter: [@samiullahk997](https://twitter.com/samiullahk997)
+- LinkedIn: [Samiullah Khan](https://www.linkedin.com/in/samiullah-khan-2702b7171/)
 
 
 ## 🤝 Contributing

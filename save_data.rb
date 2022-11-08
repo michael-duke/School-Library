@@ -1,5 +1,6 @@
 require 'json'
 require 'fileutils'
+
 class SaveData
   def check_file_exists(filename)
     FileUtils.mkdir_p('./data')
@@ -26,6 +27,7 @@ class SaveData
       people_array << person_obj
     end
     return if people_array.empty?
+
     check_file_exists('people')
     File.write('./data/people.json', JSON.pretty_generate(people_array))
   end
@@ -36,10 +38,11 @@ class SaveData
       books_array << { title: book.title, author: book.author }
     end
     return if books_array.empty?
+
     check_file_exists('books')
     File.write('./data/books.json', JSON.pretty_generate(books_array))
   end
-  
+
   def save_rentals(rentals)
     rentals_array = []
     rentals.each do |rental|
@@ -58,6 +61,7 @@ class SaveData
       rentals_array << rental_obj
     end
     return if rentals_array.empty?
+
     check_file_exists('rentals')
     File.write('./data/rentals.json', JSON.pretty_generate(rentals_array))
   end

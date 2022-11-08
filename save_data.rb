@@ -1,12 +1,19 @@
 require 'json'
 require 'fileutils'
 
-class SaveData  
-  
+class SaveData
+  def check_file_exists(filename)
+    Dir.mkdir('./data') unless Dir.exist?('./data')
+    FileUtils.touch('./data/people.json') if !File.exist?('./data/people.json') && filename == 'people'
+    FileUtils.touch('./data/books.json') if !File.exist?('./data/books.json') && filename == 'books'
+    FileUtils.touch('./data/rentals.json') if !File.exist?('./data/rentals.json') && filename == 'rentals'
+  end
+
   def save_people(people)
     people_array = []
     people.each do |person|
-      person_obj = {id:person.id, name: person.name, age: person.age, parent_permission: person.parent_permission, type: person.type}
+      person_obj = { id: person.id, name: person.name, age: person.age, parent_permission: person.parent_permission,
+                     type: person.type }
       if person.type == 'Student'
         person_obj[:classroom] = person.classroom
       else
@@ -16,7 +23,7 @@ class SaveData
     end
     p people_array
 
-    if !people_array.empty? 
+    unless people_array.empty?
       check_file_exists('people')
       File.write('./data/people.json', JSON.pretty_generate(people_array))
     end
@@ -25,11 +32,11 @@ class SaveData
   def save_books(books)
     books_array = []
     books.each do |book|
-      books_array << {title: book.title, author: book.author}
+      books_array << { title: book.title, author: book.author }
     end
     p books_array
 
-    if !books_array.empty? 
+    unless books_array.empty?
       check_file_exists('books')
       File.write('./data/books.json', JSON.pretty_generate(books_array))
     end
@@ -57,11 +64,9 @@ class SaveData
     end
     p rentals_array
 
-    if !rentals_array.empty? 
+    unless rentals_array.empty?
       check_file_exists('rentals')
-      if !File.exists?('./data/rentals.json')
-        FileUtils.touch('./data/rentals.json')
-      end
+      FileUtils.touch('./data/rentals.json') unless File.exist?('./data/rentals.json')
       File.write('./data/rentals.json', JSON.pretty_generate(rentals_array))
     end
   end

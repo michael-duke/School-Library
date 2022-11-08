@@ -16,7 +16,7 @@ class SaveData
         id: person.id,
         name: person.name,
         age: person.age,
-        parent_permission: person.parent_permission,
+        has_permission: person.parent_permission,
         type: person.type
       }
       if person.type == 'Student'
@@ -26,7 +26,6 @@ class SaveData
       end
       people_array << person_obj
     end
-    p people_array
 
     return if people_array.empty?
 
@@ -39,7 +38,6 @@ class SaveData
     books.each do |book|
       books_array << { title: book.title, author: book.author }
     end
-    p books_array
 
     return if books_array.empty?
 

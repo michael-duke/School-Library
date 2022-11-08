@@ -3,7 +3,7 @@ require 'fileutils'
 
 class SaveData
   def check_file_exists(filename)
-    Dir.mkdir('./data') unless Dir.exist?('./data')
+    FileUtils.mkdir_p('./data')
     FileUtils.touch('./data/people.json') if !File.exist?('./data/people.json') && filename == 'people'
     FileUtils.touch('./data/books.json') if !File.exist?('./data/books.json') && filename == 'books'
     FileUtils.touch('./data/rentals.json') if !File.exist?('./data/rentals.json') && filename == 'rentals'
@@ -12,8 +12,13 @@ class SaveData
   def save_people(people)
     people_array = []
     people.each do |person|
-      person_obj = { id: person.id, name: person.name, age: person.age, parent_permission: person.parent_permission,
-                     type: person.type }
+      person_obj = {
+        id: person.id,
+        name: person.name,
+        age: person.age,
+        parent_permission: person.parent_permission,
+        type: person.type
+      }
       if person.type == 'Student'
         person_obj[:classroom] = person.classroom
       else
@@ -23,10 +28,10 @@ class SaveData
     end
     p people_array
 
-    unless people_array.empty?
-      check_file_exists('people')
-      File.write('./data/people.json', JSON.pretty_generate(people_array))
-    end
+    return if people_array.empty?
+
+    check_file_exists('people')
+    File.write('./data/people.json', JSON.pretty_generate(people_array))
   end
 
   def save_books(books)
@@ -36,10 +41,10 @@ class SaveData
     end
     p books_array
 
-    unless books_array.empty?
-      check_file_exists('books')
-      File.write('./data/books.json', JSON.pretty_generate(books_array))
-    end
+    return if books_array.empty?
+
+    check_file_exists('books')
+    File.write('./data/books.json', JSON.pretty_generate(books_array))
   end
 
   def save_rentals(rentals)
@@ -47,11 +52,8 @@ class SaveData
     rentals.each do |rental|
       rental_obj = {
         date: rental.date,
-        title: rental.book.title,
-        author: rental.book.author,
-        id: rental.person.id,
-        name: rental.person.name,
-        age: rental.person.age,
+        title: rental.book.title, author: rental.book.author,
+        id: rental.person.id, name: rental.person.name, age: rental.person.age,
         parent_permission: rental.person.parent_permission,
         type: rental.person.type
       }
@@ -64,10 +66,9 @@ class SaveData
     end
     p rentals_array
 
-    unless rentals_array.empty?
-      check_file_exists('rentals')
-      FileUtils.touch('./data/rentals.json') unless File.exist?('./data/rentals.json')
-      File.write('./data/rentals.json', JSON.pretty_generate(rentals_array))
-    end
+    return if rentals_array.empty?
+
+    check_file_exists('rentals')
+    File.write('./data/rentals.json', JSON.pretty_generate(rentals_array))
   end
 end

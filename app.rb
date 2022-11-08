@@ -4,6 +4,7 @@ require_relative './teacher'
 require_relative './book'
 require_relative './rental'
 require_relative './prompt_user'
+require_relative './save_data'
 
 class App
   attr_reader :books, :people, :rentals
@@ -15,6 +16,9 @@ class App
   end
 
   def quit_app
+    SaveData.new.save_books(@books)
+    SaveData.new.save_people(@people)
+    SaveData.new.save_rentals(@rentals)
     puts 'Thank you for using this app! Now exiting...😊'
     exit
   end

@@ -6,7 +6,6 @@ describe CapitalizeDecorator do
   before :each do
     @person = Person.new(22, name: 'maximilianus')
     @capitalized_name = CapitalizeDecorator.new(@person)
-    @trimmed_name = TrimmerDecorator.new(@person)
   end
 
   context 'When using the correct_name method from the CapitalizeDecorator class' do
@@ -19,6 +18,14 @@ describe CapitalizeDecorator do
     it 'should return the name in capitalized' do
       expect(@capitalized_name.correct_name).to eql 'Maximilianus'
     end
+  end
+end
+
+describe TrimmerDecorator do
+  before :each do
+    @person = Person.new(22, name: 'maximilianus')
+    @capitalized_name = CapitalizeDecorator.new(@person)
+    @trimmed_name = TrimmerDecorator.new(@person)
   end
 
   context 'When using the correct_name method from the TrimmerDecorator class' do

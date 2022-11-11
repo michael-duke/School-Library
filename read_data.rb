@@ -1,7 +1,7 @@
 require 'json'
 
 class ReadData
-  def read_books
+  def self.read_books
     books = []
     return books unless File.exist?('./data/books.json')
 
@@ -14,7 +14,7 @@ class ReadData
     books
   end
 
-  def read_people
+  def self.read_people
     people = []
     return people unless File.exist?('./data/people.json')
 
@@ -36,7 +36,7 @@ class ReadData
     people
   end
 
-  def read_rentals
+  def self.read_rentals
     rentals = []
     return rentals unless File.exist?('./data/rentals.json')
 
@@ -49,7 +49,7 @@ class ReadData
     rentals
   end
 
-  def make_rental(rental)
+  def self.make_rental(rental)
     if rental['type'] == 'Student'
       student = Student.new(rental['classroom'], rental['age'], name: rental['name'],
                                                                 parent_permission: rental['has_permission'])

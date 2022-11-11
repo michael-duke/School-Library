@@ -2,14 +2,14 @@ require 'json'
 require 'fileutils'
 
 class SaveData
-  def check_file_exists(filename)
+  def self.check_file_exists(filename)
     FileUtils.mkdir_p('./data')
     FileUtils.touch('./data/people.json') if !File.exist?('./data/people.json') && filename == 'people'
     FileUtils.touch('./data/books.json') if !File.exist?('./data/books.json') && filename == 'books'
     FileUtils.touch('./data/rentals.json') if !File.exist?('./data/rentals.json') && filename == 'rentals'
   end
 
-  def save_people(people)
+  def self.save_people(people)
     people_array = []
     people.each do |person|
       person_obj = {
@@ -32,7 +32,7 @@ class SaveData
     File.write('./data/people.json', JSON.pretty_generate(people_array))
   end
 
-  def save_books(books)
+  def self.save_books(books)
     books_array = []
     books.each do |book|
       books_array << { title: book.title, author: book.author }
@@ -43,7 +43,7 @@ class SaveData
     File.write('./data/books.json', JSON.pretty_generate(books_array))
   end
 
-  def save_rentals(rentals)
+  def self.save_rentals(rentals)
     rentals_array = []
     rentals.each do |rental|
       rental_obj = {

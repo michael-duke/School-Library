@@ -8,6 +8,9 @@ describe Nameable do
   end
 
   context 'When creating a Nameable instance' do
+    it 'can correct_name' do
+      expect(@nameable).to respond_to(:correct_name)
+    end
     it 'should raise NotImplementedError' do
       expect do
         @nameable.correct_name
@@ -22,7 +25,7 @@ describe Nameable do
       end.not_to raise_error
     end
     it 'should retrun the name attribute correctly' do
-      expect(@person.correct_name).to eql 'Obi Wan Kenobi'
+      expect(@person.correct_name).to match 'Obi Wan Kenobi'
     end
   end
 end

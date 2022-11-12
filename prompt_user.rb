@@ -2,7 +2,7 @@ require_relative './menu_display'
 require_relative './options'
 
 class PromptUser
-  def prompt_user(app)
+  def self.prompt_user(app)
     MenuDisplay.new.menu
 
     choice = gets.chomp.to_i

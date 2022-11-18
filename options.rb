@@ -1,7 +1,7 @@
 require_relative './app'
 
 class Options
-  def option_case(choice, app)
+  def self.option_case(choice, app)
     case choice
     when 1
       app.list_all_books

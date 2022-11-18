@@ -2,11 +2,10 @@ require 'json'
 require 'fileutils'
 
 class SaveData
-  def self.check_file_exists(filename)
+  def self.create_file(path, array)
     FileUtils.mkdir_p('./data')
-    FileUtils.touch('./data/people.json') if !File.exist?('./data/people.json') && filename == 'people'
-    FileUtils.touch('./data/books.json') if !File.exist?('./data/books.json') && filename == 'books'
-    FileUtils.touch('./data/rentals.json') if !File.exist?('./data/rentals.json') && filename == 'rentals'
+    FileUtils.touch(path) unless File.exist?(path)
+    File.write(path, JSON.pretty_generate(array))
   end
 
   def self.save_people(people)
@@ -28,8 +27,7 @@ class SaveData
     end
     return if people_array.empty?
 
-    check_file_exists('people')
-    File.write('./data/people.json', JSON.pretty_generate(people_array))
+    create_file('./data/people.json', people_array)
   end
 
   def self.save_books(books)
@@ -39,8 +37,7 @@ class SaveData
     end
     return if books_array.empty?
 
-    check_file_exists('books')
-    File.write('./data/books.json', JSON.pretty_generate(books_array))
+    create_file('./data/books.json', books_array)
   end
 
   def self.save_rentals(rentals)
@@ -62,7 +59,6 @@ class SaveData
     end
     return if rentals_array.empty?
 
-    check_file_exists('rentals')
-    File.write('./data/rentals.json', JSON.pretty_generate(rentals_array))
+    create_file('./data/rentals.json', rentals_array)
   end
 end
